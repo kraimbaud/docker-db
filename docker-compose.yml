@@ -3,7 +3,7 @@ version: '3'
 services:
     db:
         image: mysql:8.0.13
-        container_name: db-${PROJECT_NAME}
+        container_name: db-mysql
         ports:
             - 3306
         command: --default-authentication-plugin=mysql_native_password
@@ -17,7 +17,7 @@ services:
 
     phpmyadmin:
         image: phpmyadmin/phpmyadmin:4.7
-        container_name: phpmyadmin-${PROJECT_NAME}
+        container_name: phpmyadmin
         ports:
             - 80
 
