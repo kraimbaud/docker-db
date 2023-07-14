@@ -1,5 +1,5 @@
-Your new Personal Docker Env for DB
-===================================
+Docker Env for DB
+=================
 
 ### Install and Run the environment
 

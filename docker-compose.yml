@@ -26,14 +26,5 @@ services:
         ports:
             - 6379:6379
 
-    elasticsearch:
-        image: elasticsearch:7.13.4
-        container_name: elasticsearch-${PROJECT_NAME}
-        ports:
-            - 9200:9200
-            - 9300:9300
-        environment:
-            - discovery.type=single-node
-
 volumes:
     data-volume: {}
