@@ -8,6 +8,8 @@ services:
             POSTGRES_USER: admin
         volumes:
             - database-volume:/var/lib/postgresql/data:rw
+        ports:
+            - 5432:5432
 
     db:
         image: mariadb:11
