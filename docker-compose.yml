@@ -5,7 +5,6 @@ services:
         image: postgres:${POSTGRES_VERSION:-15}
         container_name: db-postgres
         environment:
-            POSTGRES_DB: ${POSTGRES_DB:-app}
             POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-admin}
             POSTGRES_USER: ${POSTGRES_USER:-admin}
         volumes:
