@@ -8,3 +8,7 @@ Docker Env for DB
 ### Install and Run the environment
 
     docker compose up -d
+
+### Override config by creating docker-compose.override.yml file
+
+    touch docker-compose.override.yml
