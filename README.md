@@ -1,7 +1,7 @@
 Docker Env for DB
 =================
 
-### Copy and Edit ENV file
+### Copy and Edit .env file
 
     cp .env .env.local
 
