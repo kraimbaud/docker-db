@@ -3,8 +3,6 @@ version: '3'
 services:
     database:
         image: postgres:15-alpine
-        restart: always
-        env_file: .env.local
         environment:
             POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-admin}
             POSTGRES_USER: ${POSTGRES_USER:-admin}
@@ -16,7 +14,6 @@ services:
     pgadmin:
         image: dpage/pgadmin4
         restart: always
-        env_file: .env.local
         environment:
             - PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL:-admin@example.com}
             - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD:-admin}
@@ -26,7 +23,6 @@ services:
     db:
         image: mariadb:11
         restart: always
-        env_file: .env.local
         environment:
             MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root}
             MYSQL_USER: ${MYSQL_USER:-admin}
@@ -39,7 +35,6 @@ services:
     phpmyadmin:
         image: phpmyadmin/phpmyadmin
         restart: always
-        env_file: .env.local
         environment:
             PMA_HOST: db
             PMA_PORT: 3306
