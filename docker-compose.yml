@@ -2,7 +2,8 @@ version: '3'
 
 services:
     database:
-        image: postgres:15-alpine
+        image: postgres:${POSTGRES_VERSION:-15}-alpine
+        container_name: db-postgres
         environment:
             POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-admin}
             POSTGRES_USER: ${POSTGRES_USER:-admin}
@@ -12,7 +13,8 @@ services:
             - ${POSTGRES_PORT:-5432}:5432
 
     pgadmin:
-        image: dpage/pgadmin4
+        image: dpage/pgadmin4:${PGADMIN_VERSION:-latest}
+        container_name: pgadmin
         restart: always
         environment:
             - PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL:-admin@example.com}
@@ -21,19 +23,21 @@ services:
             - ${PGADMIN_PORT:-8080}:80
 
     db:
-        image: mariadb:11
+        image: mariadb:${POSTGRES_VERSION:-11}
+        container_name: db-mariadb
         restart: always
         environment:
-            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root}
             MYSQL_USER: ${MYSQL_USER:-admin}
             MYSQL_PASSWORD: ${MYSQL_PASSWORD:-admin}
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root}
         volumes:
             - database-volume:/var/lib/mysql
         ports:
             - ${MYSQL_PORT:-3306}:3306
 
     phpmyadmin:
-        image: phpmyadmin/phpmyadmin
+        image: phpmyadmin/phpmyadmin:${PHPMYADMIN_VERSION:-latest}
+        container_name: phpmyadmin
         restart: always
         environment:
             PMA_HOST: db
