@@ -23,7 +23,7 @@ services:
             - ${PGADMIN_PORT:-8080}:80
 
     db:
-        image: mariadb:${POSTGRES_VERSION:-11}
+        image: mariadb:${MARIADB_VERSION:-11}
         container_name: db-mariadb
         restart: always
         environment:
