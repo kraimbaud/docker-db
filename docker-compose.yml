@@ -2,13 +2,34 @@ version: '3'
 
 services:
     database:
-        image: postgres:${POSTGRES_VERSION:-15}-alpine
+        image: postgres:15-alpine
         environment:
-            POSTGRES_DB: ${POSTGRES_DB:-app}
-            POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-!ChangeMe!}
-            POSTGRES_USER: ${POSTGRES_USER:-app}
+            POSTGRES_DB: app
+            POSTGRES_PASSWORD: !ChangeMe!
+            POSTGRES_USER: app
         volumes:
-            - database_data:/var/lib/postgresql/data:rw
+            - database-volume:/var/lib/postgresql/data:rw
+
+    db:
+        image: mariadb:11
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_USER: admin
+            MYSQL_PASSWORD: admin
+        volumes:
+            - database-volume:/var/lib/mysql
+        ports:
+            - 3306:3306
+
+#    phpmyadmin:
+#        image: phpmyadmin/phpmyadmin
+#        restart: always
+#        environment:
+#            PMA_HOST: db
+#            PMA_PORT: 3306
+#        ports:
+#            - 80:80
 
 volumes:
-    database_data: {}
+    database-volume: {}
