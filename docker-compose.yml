@@ -11,6 +11,15 @@ services:
         ports:
             - 5432:5432
 
+    pgadmin:
+        image: dpage/pgadmin4
+        restart: always
+        environment:
+            - PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL:-admin@example.com}
+            - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD:-admin}
+        ports:
+            - 8080:80
+
     db:
         image: mariadb:11
         restart: always
@@ -31,6 +40,7 @@ services:
             PMA_PORT: 3306
         ports:
             - 80:80
+
 
 volumes:
     database-volume: {}
