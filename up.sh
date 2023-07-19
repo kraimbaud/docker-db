@@ -7,4 +7,5 @@ if [ ! -f .env.local ]; then
 fi
 
 # Run Docker Compose
-docker-compose --env-file .env.local up -d
+docker compose --env-file .env.local up -d
+docker compose ps
