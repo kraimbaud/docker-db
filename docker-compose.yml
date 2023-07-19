@@ -47,6 +47,7 @@ services:
 
     mongodb:
         image: mongo:${MONGODB_VERSION:-latest}
+        container_name: mongodb
         restart: always
         environment:
             MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME:-admin}
