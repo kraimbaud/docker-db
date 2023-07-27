@@ -106,7 +106,7 @@ services:
             - ELASTIC_PASSWORD=${ELASTIC_PASSWORD:-admin}
             - ELASTIC_USER=${ELASTIC_USER:-admin}
         volumes:
-            - database_data:/usr/share/elasticsearch/data
+            - database_data:/usr/lib/elasticsearch/data
         ports:
             - ${ELASTIC_PORT:-9200}:9200
 
