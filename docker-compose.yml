@@ -110,6 +110,18 @@ services:
         ports:
             - ${ELASTIC_PORT:-9200}:9200
 
+    kibana:
+        image: kibana:${KIBANA_VERSION:-8.8.1}
+        container_name: kibana
+        environment:
+            - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+            - ELASTICSEARCH_USERNAME=${ELASTIC_USER:-admin}
+            - ELASTICSEARCH_PASSWORD=${ELASTIC_PASSWORD:-admin}
+        ports:
+            - ${KIBANA_PORT:-5601}:5601
+        depends_on:
+            - elasticsearch
+
     portainer:
         image: portainer/portainer-ce:latest
         container_name: portainer
