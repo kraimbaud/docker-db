@@ -81,10 +81,10 @@ services:
         ports:
             - ${RABBITMQ_PORT:-5672}:5672
             - ${RABBITMQ_MANAGEMENT_PORT:-15672}:15672
-        command: rabbitmq-plugins enable rabbitmq_management
         environment:
             RABBITMQ_DEFAULT_USER: ${RABBITMQ_USERNAME:-guest}
             RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD:-guest}
+            RABBITMQ_ENABLED_PLUGINS: rabbitmq_management
 
 volumes:
     database_data: {}
