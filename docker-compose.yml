@@ -97,6 +97,18 @@ services:
             RABBITMQ_DEFAULT_USER: ${RABBITMQ_USERNAME:-guest}
             RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD:-guest}
             RABBITMQ_ENABLED_PLUGINS: rabbitmq_management
+    
+    elasticsearch:
+        image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_VERSION:-latest}
+        container_name: elasticsearch
+        environment:
+            - discovery.type=single-node
+            - ELASTIC_PASSWORD=${ELASTIC_PASSWORD:-admin}
+            - ELASTIC_USER=${ELASTIC_USER:-admin}
+        volumes:
+            - database_data:/usr/share/elasticsearch/data
+        ports:
+            - ${ELASTIC_PORT:-9200}:9200
 
     portainer:
         image: portainer/portainer-ce:latest
