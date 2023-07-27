@@ -88,5 +88,14 @@ services:
             RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD:-guest}
             RABBITMQ_ENABLED_PLUGINS: rabbitmq_management
 
+    portainer:
+        image: portainer/portainer-ce:latest
+        container_name: portainer
+        ports:
+            - 9443:9443
+        volumes:
+            - database_data:/data
+            - /var/run/docker.sock:/var/run/docker.sock
+
 volumes:
     database_data: {}
