@@ -77,6 +77,14 @@ services:
         volumes:
             - database_data:/data
 
+    redisinsight:
+        image: redislabs/redisinsight:latest
+        container_name: redisinsight
+        ports:
+            - ${REDISINSIGHT_PORT:-8001}:8001
+        environment:
+            RS_HOSTS: redis:6379
+
     rabbitmq:
         image: rabbitmq:latest
         container_name: rabbitmq
