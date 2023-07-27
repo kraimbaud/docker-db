@@ -55,7 +55,7 @@ services:
         volumes:
             - database_data:/data/db
         ports:
-            - 27017:27017
+            - ${MONGODB_PORT:-27017}:27017
 
     mongoexpress:
         image: mongo-express:latest
