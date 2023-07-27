@@ -72,17 +72,19 @@ services:
     redis:
         image: redis:latest
         container_name: redis
-        restart: always
         ports:
             - ${REDIS_PORT:-6379}:6379
 
     rabbitmq:
         image: rabbitmq:latest
         container_name: rabbitmq
-        restart: always
         ports:
             - ${RABBITMQ_PORT:-5672}:5672
             - ${RABBITMQ_MANAGEMENT_PORT:-15672}:15672
+        command: rabbitmq-plugins enable rabbitmq_management
+        environment:
+            RABBITMQ_DEFAULT_USER: ${RABBITMQ_USERNAME:-guest}
+            RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD:-guest}
 
 volumes:
     database_data: {}
