@@ -87,6 +87,12 @@ services:
         environment:
             RS_HOSTS: redis:6379
 
+    memcached:
+        image: memcached:latest
+        container_name: memcached
+        ports:
+            - ${MEMCACHED_PORT:-11211}:11211
+
     rabbitmq:
         image: rabbitmq:latest
         container_name: rabbitmq
