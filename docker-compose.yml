@@ -8,7 +8,7 @@ services:
             POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-admin}
             POSTGRES_USER: ${POSTGRES_USER:-admin}
         volumes:
-            - database_data:/var/lib/postgresql/data:rw
+            - postgre_db_data:/var/lib/postgresql/data:rw
         ports:
             - ${POSTGRES_PORT:-5432}:5432
 
@@ -139,3 +139,4 @@ services:
 
 volumes:
     database_data: {}
+    postgre_db_data: {}
