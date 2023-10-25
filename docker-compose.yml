@@ -76,8 +76,6 @@ services:
             - ${REDIS_PORT:-6379}:6379
         volumes:
             - database_data:/data
-        environment:
-            REDIS_PASSWORD: ${REDIS_PASSWORD:-admin}
 
     redisinsight:
         image: redislabs/redisinsight:latest
